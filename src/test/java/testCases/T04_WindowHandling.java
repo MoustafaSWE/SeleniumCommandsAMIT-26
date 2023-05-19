@@ -44,8 +44,19 @@ public class T04_WindowHandling {
     @Test()
     public void HandlingTwoTabs() throws InterruptedException {
 
+    driver.findElement(By.cssSelector("a[href=\"https://twitter.com/nopCommerce\"]")).click();
 
+    ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
 
+    driver.switchTo().window(tabs.get(1));
+
+    System.out.println(driver.getCurrentUrl());
+
+    driver.close();
+
+    driver.switchTo().window(tabs.get(0));
+
+    System.out.println(driver.getCurrentUrl());
     }
 
 
