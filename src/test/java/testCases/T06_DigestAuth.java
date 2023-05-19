@@ -35,7 +35,7 @@ public class T06_DigestAuth {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         // 4- Navigate to website
-        driver.navigate().to("https://the-internet.herokuapp.com/digest_auth");
+        driver.navigate().to("https://admin:admin@the-internet.herokuapp.com/digest_auth");
 
     }
 

@@ -1,6 +1,7 @@
 package testCases;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -33,7 +34,7 @@ public class T06_JSAlerts {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         // 4- Navigate to website
-        driver.navigate().to("https://the-internet.herokuapp.com/challenging_dom");
+        driver.navigate().to("https://the-internet.herokuapp.com/javascript_alerts");
 
     }
 
@@ -41,7 +42,9 @@ public class T06_JSAlerts {
     @Test()
     public void alertBox() throws InterruptedException {
 
+    driver.findElement(By.cssSelector("button[onclick=\"jsAlert()\"]")).click();
 
+    driver.switchTo().alert().accept();
 
     }
 
@@ -49,7 +52,9 @@ public class T06_JSAlerts {
     @Test()
     public void confirmBox() throws InterruptedException {
 
+        driver.findElement(By.cssSelector("button[onclick=\"jsConfirm()\"]")).click();
 
+        driver.switchTo().alert().dismiss();
 
     }
 
@@ -57,8 +62,10 @@ public class T06_JSAlerts {
     @Test()
     public void promptBox() throws InterruptedException {
 
+        driver.findElement(By.cssSelector("button[onclick=\"jsPrompt()\"]")).click();
 
-
+        driver.switchTo().alert().sendKeys("Hello");
+        driver.switchTo().alert().accept();
     }
 
 
