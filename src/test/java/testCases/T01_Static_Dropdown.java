@@ -1,8 +1,11 @@
 package testCases;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -23,13 +26,13 @@ public class T01_Static_Dropdown {
         WebDriverManager.chromedriver().setup();
 
         // 2- Create new object from chromedriver
-        driver = new ChromeDriver(); // pull updated
+        driver = new ChromeDriver();
 
         // 3- Configuration
         //3.1- Maximize browser
         driver.manage().window().maximize();
 
-        //3.2- Set implicit wait
+        //3.2 - Set implicit wait
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 
@@ -43,22 +46,25 @@ public class T01_Static_Dropdown {
     public void StaticDropdown() throws InterruptedException {
 
         // 1- Define webEelement for the list
-
+        WebElement dropDown = driver.findElement(By.id("dropdown"));
 
         // 2- Create new object from Select class in selenium
         //you should make sure about this >> import org.openqa.selenium.support.ui.Select;
-
+        Select select = new Select(dropDown);
 
         //3- Select options using 3 methods
         //3.1- SelectByIndex
-
+        Thread.sleep(3000);
+        select.selectByIndex(1);
 
         //3.2- SelectByValue
         //Note SelectByValue input value is String but SelectByIndex is Integer
-
+        Thread.sleep(3000);
+        select.selectByValue("2");
 
         //3.3- SelectByVisibleText
-
+        Thread.sleep(3000);
+        select.selectByVisibleText("Option 1");
 
     }
 
