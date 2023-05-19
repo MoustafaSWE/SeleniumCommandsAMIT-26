@@ -1,13 +1,17 @@
 package testCases;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 public class T03_findelements {
 
@@ -39,14 +43,20 @@ public class T03_findelements {
 
 
     @Test
-    public void findelements() throws InterruptedException {
+    public void findElements() throws InterruptedException {
 
         //1- search on "selenium"
+        driver.findElement(By.name("q")).sendKeys("selenium");
 
-
+        List<WebElement> dropDownMenu = driver.findElements(By.cssSelector("ul[jsname=\"bw4e9b\"] li"));
         //2- loop on all results and make sure that they are all contains the word "selenium"
+        for (int i = 0; i < dropDownMenu.size() ; i++){
 
+            System.out.println(i);
+            System.out.println(dropDownMenu.get(i).getText());
+            Assert.assertTrue(dropDownMenu.get(i).getText().contains("selenium"));
 
+        }
 
 
     }
