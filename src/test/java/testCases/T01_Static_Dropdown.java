@@ -23,7 +23,7 @@ public class T01_Static_Dropdown {
         WebDriverManager.chromedriver().setup();
 
         // 2- Create new object from chromedriver
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(); // pull updated
 
         // 3- Configuration
         //3.1- Maximize browser
